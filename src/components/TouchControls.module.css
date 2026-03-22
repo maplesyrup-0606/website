@@ -1,0 +1,59 @@
+.controls {
+  position: fixed;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 60;
+  pointer-events: none;
+
+  /* Only show on touch devices */
+  display: none;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .controls {
+    display: flex;
+  }
+}
+
+.btn {
+  pointer-events: all;
+  width: 64px;
+  height: 64px;
+  background: rgba(10, 10, 20, 0.85);
+  border: 3px solid #444466;
+  color: #888;
+  font-size: 20px;
+  font-family: 'Press Start 2P', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: border-color 0.1s, color 0.1s, background 0.1s;
+  cursor: pointer;
+}
+
+.btn:active,
+.btn.active {
+  background: rgba(180, 0, 255, 0.2);
+  border-color: #b400ff;
+  color: #b400ff;
+}
+
+.jump {
+  border-color: #b400ff88;
+  color: #b400ff88;
+}
+
+.jump:active {
+  background: rgba(180, 0, 255, 0.3);
+  border-color: #b400ff;
+  color: #b400ff;
+  box-shadow: 0 0 16px #b400ff55;
+}

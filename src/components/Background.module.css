@@ -1,0 +1,44 @@
+.bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+}
+
+.horizonGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: var(--op, 0.5); }
+  to { opacity: calc(var(--op, 0.5) * 0.3); }
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.08) 3px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+}

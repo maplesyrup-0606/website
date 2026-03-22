@@ -1,0 +1,51 @@
+.ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  background: radial-gradient(circle at 35% 35%, #ffffff, #b400ff 60%, #6600aa);
+  border-radius: 50%;
+  border: 3px solid #000;
+  box-shadow:
+    0 0 8px #b400ff,
+    0 0 20px #b400ff55;
+  will-change: transform;
+  image-rendering: pixelated;
+  z-index: 10;
+}
+
+.shine {
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  width: 10px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  transform: rotate(-30deg);
+}
+
+.eye {
+  position: absolute;
+  bottom: 9px;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+  background: #000;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 10px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.7) 0%, transparent 70%);
+  border-radius: 50%;
+  will-change: transform, opacity;
+  z-index: 5;
+  transform-origin: center top;
+}

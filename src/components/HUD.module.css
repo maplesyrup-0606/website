@@ -1,0 +1,38 @@
+.hud {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  pointer-events: none;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #444466;
+  background: rgba(10, 10, 15, 0.85);
+  padding: 10px 18px;
+  border: 2px solid #222240;
+  white-space: nowrap;
+}
+
+.divider { color: #2a2a44; }
+
+.hint {
+  color: #b400ff;
+  animation: blink 0.9s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Hide keyboard hint on touch-only devices */
+@media (hover: none) and (pointer: coarse) {
+  .hud { display: none; }
+}
