@@ -209,7 +209,7 @@
 /* Cats */
 .catsWrapper {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   justify-content: center;
 }
 
@@ -218,6 +218,8 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  flex: 1;
+  min-width: 0;
 }
 
 .catName {
@@ -228,12 +230,12 @@
 }
 
 .catImg {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border: 3px solid var(--color);
   box-shadow: 0 0 16px var(--color);
-  image-rendering: auto;
+  display: block;
 }
 
 /* Resume */

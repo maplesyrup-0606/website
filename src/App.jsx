@@ -55,7 +55,7 @@ export default function App() {
       <HUD activePlatform={activePlatform} />
 
       {/* Mobile touch controls */}
-      <TouchControls touchRef={touchRef} />
+      <TouchControls touchRef={touchRef} activePlatform={activePlatform} onOpen={setOpenSection} />
 
       {/* Section panel */}
       {openSection && (

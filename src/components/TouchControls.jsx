@@ -1,6 +1,6 @@
 import styles from './TouchControls.module.css';
 
-export default function TouchControls({ touchRef }) {
+export default function TouchControls({ touchRef, activePlatform, onOpen }) {
   const press   = (key) => () => { touchRef.current[key] = true; };
   const release = (key) => () => { touchRef.current[key] = false; };
 
@@ -29,6 +29,17 @@ export default function TouchControls({ touchRef }) {
           ▶
         </button>
       </div>
+
+      {/* Centre: enter button — only when on a platform */}
+      {activePlatform && (
+        <button
+          className={`${styles.btn} ${styles.enter}`}
+          onPointerDown={() => onOpen(activePlatform)}
+          aria-label="Open section"
+        >
+          ENTER
+        </button>
+      )}
 
       {/* Right side: jump button */}
       <button
