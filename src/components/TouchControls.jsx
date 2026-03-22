@@ -30,12 +30,11 @@ export default function TouchControls({ touchRef, activePlatform, onOpen }) {
         </button>
       </div>
 
-      {/* Centre: enter button — always visible, active when on a platform */}
+      {/* Centre: enter button */}
       <button
         className={`${styles.btn} ${styles.enter} ${activePlatform ? styles.enterActive : ''}`}
         onPointerDown={() => activePlatform && onOpen(activePlatform)}
         aria-label="Open section"
-        disabled={!activePlatform}
       >
         ENTER
       </button>

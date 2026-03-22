@@ -53,18 +53,17 @@
 .enter {
   font-size: 9px;
   letter-spacing: 1px;
-  border-color: #333355;
-  color: #333355;
+  border-color: #444466;
+  color: #aaaacc;
   padding: 0 12px;
   width: auto;
   min-width: 72px;
-  cursor: default;
 }
 
 .enterActive {
-  border-color: #ffffffaa;
+  border-color: #ffffffcc;
   color: #fff;
-  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
   animation: pulse 0.8s step-end infinite;
 }
 
