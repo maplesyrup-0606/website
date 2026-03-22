@@ -6,17 +6,31 @@ export default function TouchControls({ touchRef }) {
 
   return (
     <div className={styles.controls}>
-      <button
-        className={styles.btn}
-        onPointerDown={press('left')}
-        onPointerUp={release('left')}
-        onPointerLeave={release('left')}
-        onPointerCancel={release('left')}
-        aria-label="Move left"
-      >
-        ◀
-      </button>
+      {/* Left side: movement buttons */}
+      <div className={styles.dpad}>
+        <button
+          className={styles.btn}
+          onPointerDown={press('left')}
+          onPointerUp={release('left')}
+          onPointerLeave={release('left')}
+          onPointerCancel={release('left')}
+          aria-label="Move left"
+        >
+          ◀
+        </button>
+        <button
+          className={styles.btn}
+          onPointerDown={press('right')}
+          onPointerUp={release('right')}
+          onPointerLeave={release('right')}
+          onPointerCancel={release('right')}
+          aria-label="Move right"
+        >
+          ▶
+        </button>
+      </div>
 
+      {/* Right side: jump button */}
       <button
         className={`${styles.btn} ${styles.jump}`}
         onPointerDown={press('jump')}
@@ -26,17 +40,6 @@ export default function TouchControls({ touchRef }) {
         aria-label="Jump"
       >
         ▲
-      </button>
-
-      <button
-        className={styles.btn}
-        onPointerDown={press('right')}
-        onPointerUp={release('right')}
-        onPointerLeave={release('right')}
-        onPointerCancel={release('right')}
-        aria-label="Move right"
-      >
-        ▶
       </button>
     </div>
   );

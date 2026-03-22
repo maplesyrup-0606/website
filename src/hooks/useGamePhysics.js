@@ -8,7 +8,7 @@ const REF_H = 600;
 const BALL_RADIUS  = 18;
 const BASE_BOUNCE  = 11;
 const BASE_JUMP    = -13;
-const BASE_SPEED   = 4;
+const BASE_SPEED   = 6;   // horizontal speed in % of viewport per frame (not scaled by width)
 const BASE_GRAVITY = 0.5;
 
 export function useGamePhysics({ worldRef, onLand, onLeave, touchRef }) {
@@ -55,7 +55,7 @@ export function useGamePhysics({ worldRef, onLand, onLeave, touchRef }) {
       const sx = ww / REF_W;
       const sy = wh / REF_H;
 
-      const MOVE_SPEED   =  BASE_SPEED   * sx;
+      const MOVE_SPEED   =  BASE_SPEED;          // constant px/frame — world = viewport so feels same everywhere
       const JUMP_FORCE   =  BASE_JUMP    * sy;
       const FIXED_BOUNCE =  BASE_BOUNCE  * sy;
       const GRAVITY      =  BASE_GRAVITY * sy;

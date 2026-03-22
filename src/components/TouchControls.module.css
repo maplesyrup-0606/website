@@ -3,14 +3,12 @@
   bottom: 24px;
   left: 0;
   right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  display: none;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 24px;
   z-index: 60;
   pointer-events: none;
-
-  /* Only show on touch devices */
-  display: none;
 }
 
 @media (hover: none) and (pointer: coarse) {
@@ -19,14 +17,20 @@
   }
 }
 
+.dpad {
+  display: flex;
+  gap: 12px;
+  pointer-events: none;
+}
+
 .btn {
   pointer-events: all;
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   background: rgba(10, 10, 20, 0.85);
   border: 3px solid #444466;
   color: #888;
-  font-size: 20px;
+  font-size: 22px;
   font-family: 'Press Start 2P', monospace;
   display: flex;
   align-items: center;
@@ -49,11 +53,14 @@
 .jump {
   border-color: #b400ff88;
   color: #b400ff88;
+  width: 80px;
+  height: 80px;
+  font-size: 26px;
 }
 
 .jump:active {
   background: rgba(180, 0, 255, 0.3);
   border-color: #b400ff;
   color: #b400ff;
-  box-shadow: 0 0 16px #b400ff55;
+  box-shadow: 0 0 20px #b400ff55;
 }
