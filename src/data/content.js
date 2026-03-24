@@ -3,12 +3,12 @@ export const GROUND_Y = 88; // percent of viewport height
 // x and widthPct are percentages of viewport width (0–100)
 // y is percentage of viewport height (0–100)
 export const PLATFORMS = [
-  { id: 'about',    label: 'ABOUT',    color: '#39ff14', xPct: 6,  y: 66, widthPct: 13 },
-  { id: 'projects', label: 'PROJECTS', color: '#00ffff', xPct: 24, y: 50, widthPct: 16 },
-  { id: 'mycats',   label: 'MY CATS',  color: '#ffaaff', xPct: 44, y: 30, widthPct: 13 },
-  { id: 'contact',  label: 'CONTACT',  color: '#b400ff', xPct: 47, y: 62, widthPct: 14 },
-  { id: 'resume',   label: 'RESUME',   color: '#ff4488', xPct: 69, y: 46, widthPct: 12 },
-  { id: 'skills',   label: 'SKILLS',   color: '#ff6600', xPct: 86, y: 57, widthPct: 12 },
+  { id: 'about',    label: 'ABOUT',    emoji: '🙋', color: '#39ff14', xPct: 6,  y: 66, widthPct: 13 },
+  { id: 'projects', label: 'PROJECTS', emoji: '🚀', color: '#00ffff', xPct: 24, y: 50, widthPct: 16 },
+  { id: 'mycats',   label: 'MY CATS',  emoji: '🐱', color: '#ffaaff', xPct: 44, y: 30, widthPct: 13 },
+  { id: 'contact',  label: 'CONTACT',  emoji: '📬', color: '#b400ff', xPct: 47, y: 62, widthPct: 14 },
+  { id: 'resume',   label: 'RESUME',   emoji: '📄', color: '#ff4488', xPct: 69, y: 46, widthPct: 12 },
+  { id: 'skills',   label: 'SKILLS',   emoji: '⚡', color: '#ff6600', xPct: 86, y: 57, widthPct: 12 },
 ];
 
 export const CONTENT = {

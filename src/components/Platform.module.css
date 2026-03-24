@@ -15,6 +15,22 @@
   box-shadow: 0 0 24px var(--color), 0 0 50px var(--color), 4px 4px 0 #000;
 }
 
+.emoji {
+  position: absolute;
+  top: -58px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  pointer-events: none;
+  animation: floatEmoji 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+}
+
+@keyframes floatEmoji {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50%       { transform: translateX(-50%) translateY(-8px); }
+}
+
 .label {
   position: absolute;
   top: -28px;

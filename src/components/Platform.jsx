@@ -11,6 +11,7 @@ export default function Platforms({ activePlatform, onOpen }) {
           style={{ left: `${p.xPct}%`, top: `${p.y}%`, width: `${p.widthPct}%`, '--color': p.color }}
           onClick={() => onOpen(p.id)}
         >
+          <span className={styles.emoji}>{p.emoji}</span>
           <span className={styles.label} style={{ color: p.color }}>{p.label}</span>
           {activePlatform === p.id && (
             <span className={styles.enterHint}>[ ENTER ]</span>
