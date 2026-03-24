@@ -6,6 +6,7 @@ import SectionPanel from './components/SectionPanel';
 import HUD from './components/HUD';
 import TouchControls from './components/TouchControls';
 import { useGamePhysics } from './hooks/useGamePhysics';
+import { PLATFORMS } from './data/content';
 import styles from './App.module.css';
 
 export default function App() {
@@ -16,14 +17,18 @@ export default function App() {
   const [openSection, setOpenSection]       = useState(null);
   const [isChaos, setIsChaos]               = useState(false);
 
+  // Live platform positions — written by Platform.jsx every frame, read by physics
+  const platformPosRef = useRef(PLATFORMS.map(p => ({ ...p })));
+
   const handleLand  = useCallback((id) => setActivePlatform(id), []);
   const handleLeave = useCallback(() => setActivePlatform(null), []);
 
   const { ballRef, shadowRef } = useGamePhysics({
     worldRef,
-    onLand:   handleLand,
-    onLeave:  handleLeave,
+    onLand:        handleLand,
+    onLeave:       handleLeave,
     touchRef,
+    platformPosRef,
   });
 
   // Enter key opens panel
@@ -47,7 +52,12 @@ export default function App() {
       <div className={styles.worldWrapper}>
         <div ref={worldRef} className={styles.world}>
           <Background />
-          <Platforms activePlatform={activePlatform} onOpen={setOpenSection} isChaos={isChaos} />
+          <Platforms
+            activePlatform={activePlatform}
+            onOpen={setOpenSection}
+            isChaos={isChaos}
+            platformPosRef={platformPosRef}
+          />
           <Ball ballRef={ballRef} shadowRef={shadowRef} />
         </div>
       </div>

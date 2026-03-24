@@ -2,12 +2,21 @@ import { useRef, useEffect } from 'react';
 import styles from './Platform.module.css';
 import { PLATFORMS, GROUND_Y } from '../data/content';
 
-export default function Platforms({ activePlatform, onOpen, isChaos }) {
+export default function Platforms({ activePlatform, onOpen, isChaos, platformPosRef }) {
   const platformRefs = useRef([]);
   const velRef       = useRef(PLATFORMS.map(() => ({ vx: 0, vy: 0 })));
   const posRef       = useRef(PLATFORMS.map(p => ({ x: p.xPct, y: p.y })));
   const modeRef      = useRef('idle'); // 'chaos' | 'returning' | 'idle'
   const rafRef       = useRef(null);
+
+  const syncPos = (i, x, y) => {
+    const el = platformRefs.current[i];
+    if (el) { el.style.left = `${x}%`; el.style.top = `${y}%`; }
+    // Keep shared ref in sync so physics reads live positions
+    if (platformPosRef) {
+      platformPosRef.current[i] = { ...PLATFORMS[i], xPct: x, y };
+    }
+  };
 
   useEffect(() => {
     cancelAnimationFrame(rafRef.current);
@@ -33,13 +42,12 @@ export default function Platforms({ activePlatform, onOpen, isChaos }) {
           pos.y += vel.vy;
 
           // Bounce off edges
-          if (pos.x < 0)                    { pos.x = 0;                    vel.vx =  Math.abs(vel.vx); }
-          if (pos.x + p.widthPct > 100)     { pos.x = 100 - p.widthPct;    vel.vx = -Math.abs(vel.vx); }
-          if (pos.y < 2)                    { pos.y = 2;                    vel.vy =  Math.abs(vel.vy); }
-          if (pos.y > GROUND_Y - 8)         { pos.y = GROUND_Y - 8;        vel.vy = -Math.abs(vel.vy); }
+          if (pos.x < 0)                { pos.x = 0;                 vel.vx =  Math.abs(vel.vx); }
+          if (pos.x + p.widthPct > 100) { pos.x = 100 - p.widthPct; vel.vx = -Math.abs(vel.vx); }
+          if (pos.y < 2)                { pos.y = 2;                 vel.vy =  Math.abs(vel.vy); }
+          if (pos.y > GROUND_Y - 8)     { pos.y = GROUND_Y - 8;     vel.vy = -Math.abs(vel.vy); }
 
-          const el = platformRefs.current[i];
-          if (el) { el.style.left = `${pos.x}%`; el.style.top = `${pos.y}%`; }
+          syncPos(i, pos.x, pos.y);
         });
 
         rafRef.current = requestAnimationFrame(tick);
@@ -69,8 +77,7 @@ export default function Platforms({ activePlatform, onOpen, isChaos }) {
             pos.y = p.y;
           }
 
-          const el = platformRefs.current[i];
-          if (el) { el.style.left = `${pos.x}%`; el.style.top = `${pos.y}%`; }
+          syncPos(i, pos.x, pos.y);
         });
 
         if (!allDone) rafRef.current = requestAnimationFrame(tick);
@@ -81,6 +88,7 @@ export default function Platforms({ activePlatform, onOpen, isChaos }) {
     }
 
     return () => cancelAnimationFrame(rafRef.current);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isChaos]);
 
   return (

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 import { GROUND_Y, PLATFORMS } from '../data/content';
 
 // Reference resolution the constants were tuned for
@@ -11,7 +11,7 @@ const BASE_JUMP    = -13;
 const BASE_SPEED   = 6;   // horizontal speed in % of viewport per frame (not scaled by width)
 const BASE_GRAVITY = 0.5;
 
-export function useGamePhysics({ worldRef, onLand, onLeave, touchRef }) {
+export function useGamePhysics({ worldRef, onLand, onLeave, touchRef, platformPosRef }) {
   const stateRef = useRef({
     x: window.innerWidth * 0.09,
     y: window.innerHeight * 0.33,
@@ -97,9 +97,10 @@ export function useGamePhysics({ worldRef, onLand, onLeave, touchRef }) {
         }
       }
 
-      // Platform collision → fixed bounce
+      // Platform collision → fixed bounce (use live positions if available)
+      const livePlatforms = platformPosRef?.current ?? PLATFORMS;
       if (s.vy >= 0) {
-        for (const p of PLATFORMS) {
+        for (const p of livePlatforms) {
           const px  = p.xPct    * ww / 100;
           const pw  = p.widthPct * ww / 100;
           const top = (p.y / 100) * wh;
