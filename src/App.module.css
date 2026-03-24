@@ -42,6 +42,41 @@
   white-space: nowrap;
 }
 
+/* Chaos button */
+.chaosBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 30;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 8px 12px;
+  background: #1a1a2e;
+  color: #ff6600;
+  border: 3px solid #ff6600;
+  box-shadow: 0 0 10px #ff6600, 3px 3px 0 #000;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: box-shadow 0.15s, color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.chaosBtn:hover {
+  box-shadow: 0 0 20px #ff6600, 0 0 40px #ff660066, 3px 3px 0 #000;
+}
+
+.chaosBtnActive {
+  color: #ff4488;
+  border-color: #ff4488;
+  box-shadow: 0 0 14px #ff4488, 0 0 30px #ff448866, 3px 3px 0 #000;
+  animation: chaosPulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes chaosPulse {
+  from { box-shadow: 0 0 14px #ff4488, 0 0 30px #ff448866, 3px 3px 0 #000; }
+  to   { box-shadow: 0 0 28px #ff4488, 0 0 60px #ff448899, 3px 3px 0 #000; }
+}
+
 /* Room transition overlay */
 .transition {
   position: fixed;

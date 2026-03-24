@@ -14,6 +14,7 @@ export default function App() {
 
   const [activePlatform, setActivePlatform] = useState(null);
   const [openSection, setOpenSection]       = useState(null);
+  const [isChaos, setIsChaos]               = useState(false);
 
   const handleLand  = useCallback((id) => setActivePlatform(id), []);
   const handleLeave = useCallback(() => setActivePlatform(null), []);
@@ -46,10 +47,18 @@ export default function App() {
       <div className={styles.worldWrapper}>
         <div ref={worldRef} className={styles.world}>
           <Background />
-          <Platforms activePlatform={activePlatform} onOpen={setOpenSection} />
+          <Platforms activePlatform={activePlatform} onOpen={setOpenSection} isChaos={isChaos} />
           <Ball ballRef={ballRef} shadowRef={shadowRef} />
         </div>
       </div>
+
+      {/* Chaos button */}
+      <button
+        className={`${styles.chaosBtn} ${isChaos ? styles.chaosBtnActive : ''}`}
+        onClick={() => setIsChaos(c => !c)}
+      >
+        {isChaos ? '🌀 CALM' : '🌀 CHAOS'}
+      </button>
 
       {/* HUD */}
       <HUD activePlatform={activePlatform} />
