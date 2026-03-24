@@ -15,18 +15,7 @@ export const CONTENT = {
   about: {
     title: 'ABOUT ME',
     color: '#39ff14',
-    body: `Mercury Mcindoe.
-
-Computer Engineering @ UBC
-
-SWE Intern @ Amazon — building
-AI-powered call-resolution systems.
-
-Previously: Vision-Language Model
-research @ UBC Vision Group.
-
-Software Team Lead @ UBC UAS —
-2nd place, AEAC 2025 Nationals.`,
+    body: `Hi! I am Mercury and welcome to my FULLY vibe-coded website!`,
   },
 
   projects: {
